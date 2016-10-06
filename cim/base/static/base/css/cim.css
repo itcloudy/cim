@@ -1,0 +1,76 @@
+#main-content{
+    margin-top:80px;
+}
+#index-jumbotron{
+    min-height:300px;
+    padding:30px 30px;
+
+}
+
+.title-core{
+    color:red;
+    text-align:center;
+    vertical-align: middle;
+}
+
+#title-home {
+  color: #428bca;
+}
+#title-home:hover {
+  color: #3071a9;
+}
+#index-message{
+    text-align:center;
+    color:red;
+}
+.input-required{
+    border-color:#285e8e;
+
+}
+#modal-form-login .form-control{
+    margin-top:20px;
+    height: auto;
+}
+#loginModal h4{
+    color:blue;
+    text-align:center;
+    font-size:20px;
+}
+.main-block{
+    padding-left:0px;
+}
+.right-block{
+    padding-left:0px;
+}
+.left-block{
+    padding-right:0px;
+}
+.right-main-block{
+    padding-left:0px;
+    padding-right:0px;
+}
+.float-left{
+    float:left;
+}
+.float-right{
+    float:right;
+}
+.panel-title-style{
+    height:18px;
+}
+
+
+.list-block .list-group-item:hover{
+    background-color:#bce8f1;
+    color:red;
+}
+.list-block .list-group-item:hover a{
+    color:red;
+}
+.list-block .list-group-item a{
+   text-decoration:none;
+   font-size:16px;
+}
+.list-block  .active a{
+   color:white;
+}

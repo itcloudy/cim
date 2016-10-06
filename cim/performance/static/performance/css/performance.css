@@ -1,0 +1,11 @@
+.form-assessment-line{
+    width:50px;
+}
+#performance-history{
+    padding-bottom:2px;
+    border-bottom:solid 1px #428bca;
+}
+#performance-history-score{
+    float:right;
+    color:red;
+}

@@ -1,0 +1,8 @@
+# sphinx build directories
+_build/
+
+# dotfiles
+.*
+!.gitignore
+*.py[co]
+

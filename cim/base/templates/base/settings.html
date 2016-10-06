@@ -1,0 +1,59 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%if add_user%}
+    {%block css_extend %}
+        <link rel="stylesheet"  href="{% static 'base/bootstrap/css/bootstrap-select.min.css' %}" />
+    {%endblock%}
+    {%block js_extend %}
+        <script src="{% static 'base/bootstrap/js/bootstrap-select.js' %}"></script>
+        <script src="{% static 'base/bootstrap/js/bootstrap-select.zh-CN.js' %}"></script>
+
+
+
+    {%endblock%}
+{%endif%}
+{#设置#}
+{%block mainblock%}
+<div class="list-block">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">设置</h3>
+                </div>
+
+                <ul class="list-group text-center">
+                    {%if user.is_superuser%}
+                        <li class="list-group-item {%if add_user%} active {%endif%}"><a type='button' class='btn-block' href="/settings/add_user/">添加用户</a></li>
+                    {%endif%}
+                    <li class="list-group-item {%if change_password%} active {%endif%}"><a type='button' class='btn-block' href="/settings/change_password/">修改密码</a></li>
+                    <li class="list-group-item"><a type='button' class='btn-block' href="/settings/change_head/">修改头像</a></li>
+                    {%if user.is_superuser%}
+                        <li class="list-group-item {%if performance_setting%} active {%endif%}"><a type='button' class='btn-block' href="/performance/setting/">绩效考核</a></li>
+                    {%endif%}
+
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            {%if change_password%}
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        {% include 'base/form/change_password_form.html'%}
+                    </div>
+                </div>
+
+            {%endif%}
+            {%if add_user%}
+
+                {% include 'base/form/add_user_form.html'%}
+
+
+            {%endif%}
+            {%block settings_performance%}
+            {%endblock settings_performance%}
+        </div>
+    </div>
+</div>
+{%endblock mainblock%}

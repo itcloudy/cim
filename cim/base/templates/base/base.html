@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>信息管理中心</title>
+    <!--[if lte IE 9]>
+        你使用的浏览器版本小于IE9，这是IE的过期版本，是时候升级了！
+    <![endif]-->
+     <meta content="width=device-width,initial-scale=1" name="viewport">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+
+    <link rel="stylesheet"  href="{% static 'base/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet"  href="{% static 'base/validator/css/bootstrapValidator.min.css' %}" />
+    {%block css_extend %}
+    {%endblock%}
+    <link rel="stylesheet"  href="{% static 'base/css/cim.css' %}" />
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+
+            <a href="/" class="navbar-brand" id="title-home">信息管理中心&nbsp;<span class="glyphicon glyphicon-home"></span></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <!--<li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">消息 <sup><span class="badge">42</span></sup><span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="">message</a></li>
+                    <li><a href="">message</a></li>
+                    <li><a href="">message</a></li>
+                </ul>
+            </li>-->
+            {%if user.username%}
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        {%if user.username %}
+                        <li><a href="/logout/">注销</a></li>
+                        {#<!--<li><a href="/change_password/">修改密码</a></li>-->#}
+                        {%endif%}
+                        {% if user.is_superuser%}
+                        <li><a href="/settings/index/">设置</a></li>
+                        <li><a href="/admin/">进入后台</a></li>
+                        {% endif%}
+                    </ul>
+                </li>
+            {%else%}
+                <li>
+                    <li><a href="#" data-toggle="modal" data-target="#loginModal">未登录</a></li>
+                </li>
+            {%endif%}
+        </ul>
+    </div>
+</nav>
+<div class="container" id="main-content">
+    {%block mainblock%}{%endblock%}
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myLoginModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4>登录</h4>
+            </div>
+            <div class="modal-body">
+                <form id="modal-form-login" action="/login/" role="form" method="post">
+                    {% csrf_token %}
+                    <input type="text" class="form-control" name="username" placeholder="请输入用户名" required autofocus>
+                    <input type="password" class="form-control" name="password" placeholder="请输入密码" required >
+                    <button class="btn btn-lg btn-warning btn-block form-control" type="submit">登录</button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="{% static 'base/js/jquery-3.0.0.min.js' %}"></script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="{% static 'base/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'base/validator/js/bootstrapValidator.min.js' %}"></script>
+
+<script src="{% static 'base/js/cim.js' %}"></script>
+<script src="{% static 'base/js/cimValidator.js' %}"></script>
+<!--js请求-->
+<script src="{% static 'base/js/ajax_csrf.js' %}"></script>
+
+{%block js_extend %}
+{%endblock%}
+
+</body>
+</body>
+</html>

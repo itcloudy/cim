@@ -1,0 +1,63 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'base/js/echarts.min.js' %}"></script>
+    <script src="{% static 'performance/js/performanceChart.js' %}"></script>
+
+{%endblock%}
+{%block mainblock%}
+<div class="info">
+    {%if performInfo%}
+        <div class="alert alert-warning alert-dismissible" role="alert" xmlns="http://www.w3.org/1999/html">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p><strong>您有未完成的绩效考核</strong><a href="/performance/list/?detail=1">点击进入</a></p>
+        </div>
+    {%endif%}
+</div>
+<div class="row">
+    <!--趋势-->
+    <div class="col-md-9">
+         <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title-style">
+                     <h3  class="panel-title text-center" >绩效考核趋势图<span class="float-right"><a href="/performance/detail/">详情>></a></span></h3>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 echarts-drow " id="performance-trend-chart">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--历史查看-->
+    <div class="col-md-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <div class="panel-title-style">
+
+                    <div class="float-left"><h3 class="panel-title" >绩效考核历史</h3></div>
+                    <div class="float-right"><a href="/performance/history/">更多>></a></div>
+
+                </div>
+            </div>
+            <div class="panel-body" >
+                 <ul class="list-group  ">
+                     {% if month_record_list%}
+                        {%for month_record in month_record_list%}
+                            <h5 class="list-gorup-item" id="performance-history">{{month_record.date}}<a href="/performance/month_detail/?month_id={{month_record.id}}" id="performance-history-score">{{month_record.score}}</a></h5>
+                        {%endfor%}
+                    {%endif%}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

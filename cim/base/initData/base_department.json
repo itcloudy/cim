@@ -1,0 +1,20 @@
+[
+{
+  "fields": {
+    "charge": null,
+    "name": "\u4fe1\u606f\u7ba1\u7406\u4e2d\u5fc3",
+    "parent": null
+  },
+  "model": "base.department",
+  "pk": 1
+},
+{
+  "fields": {
+    "charge": null,
+    "name": "\u4e92\u8054\u7f51\u8fd0\u8425\u4e2d\u5fc3",
+    "parent": 1
+  },
+  "model": "base.department",
+  "pk": 2
+}
+]

@@ -1,0 +1,50 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+
+{%endblock%}
+{%block mainblock%}
+<div class="list-block">
+    <div class="row">
+        <div class="col-md-2">
+             <div class="list-group text-center">
+                 <li class="list-group-item {%if not user_id%}active{%endif%}"><a type='button' class='btn-block' href="/performance/list/?detail=1">评定内容</a></li>
+                {#自评#}
+                {%if self_record%}
+                <li class="list-group-item {%if  user_id == user.id %}active{%endif%}"><a type='button' class='btn-block' href="/performance/list/?user_id={{user.id}}">自评</a></li>
+                {%endif%}
+                {#下属#}
+                {%if lower_mark_list%}
+                    {%for lower in lower_mark_list%}
+                        <li class="list-group-item {%if  user_id == lower.id %}active{%endif%}"><a type='button' class='btn-block' href="/performance/list/?user_id={{lower.id}}">{{lower.name}}</a></li>
+                    {%endfor%}
+                {%endif%}
+                {#相关人#}
+                {%if stakeholder_list%}
+                    {%for stakeholder in stakeholder_list%}
+                        <li class="list-group-item {%if  user_id == stakeholder.id %}active{%endif%}"><a type='button' class='btn-block' href="/performance/list/?user_id={{stakeholder.id}}">{{stakeholder.name}}</a></li>
+                    {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+        <div class="col-md-10">
+            {%if details %}
+                {% include 'performance/form/performance_detail.html'%}
+            {%elif  performance_details%}
+                {% include 'performance/form/performance_form.html'%}
+            {%else%}
+                <h1 class="text-center">没有数据</h1>
+            {%endif %}
+        </div>
+    </div>
+</div>
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'performance/js/performance.js' %}"></script>
+
+
+
+{%endblock%}

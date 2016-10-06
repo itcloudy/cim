@@ -1,0 +1,31 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'base/js/echarts.min.js' %}"></script>
+    <script src="{% static 'performance/js/performanceChart.js' %}"></script>
+
+{%endblock%}
+{%block mainblock%}
+    <div class="row">
+        <div class="col-md-12" >
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <div class="panel-title-style">
+                         <h3  class="panel-title text-center" >绩效考核趋势详情图<span class="float-left"><a href="/performance/index/">&lt;&lt;返回</a></span></h3>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-12 echarts-drow " id="performanceDetailChart">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

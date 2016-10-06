@@ -1,0 +1,43 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'base/js/echarts.min.js' %}"></script>
+    <script src="{% static 'performance/js/performanceChart.js' %}"></script>
+
+{%endblock%}
+{%block mainblock%}
+ <div class="row">
+     <div class="col-md-12">
+         {%if month_record_list%}
+             <table class="table table-hover table-condensed table-striped">
+                <thead>
+                    <tr>
+                        {%for title in table_title_list%}
+                            <th>{{title}}</th>
+                        {%endfor%}
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {%for month_record in month_record_list%}
+                         <tr>
+                             <th><a href="/performance/month_detail/?month_id={{month_record.id}}">{{month_record.date}}</a></th>
+                            {%for data in month_record.data%}
+                                <td>{{data}}</td>
+                            {%endfor%}
+                         </tr>
+                    {%endfor%}
+
+                </tbody>
+             </table>
+         {%endif%}
+     </div>
+
+ </div>
+{%endblock%}

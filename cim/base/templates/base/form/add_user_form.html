@@ -1,0 +1,84 @@
+
+{%if errorList%}
+    {%for line in errorList%}
+<div class="alert alert-danger alert-dismissible" role="alert" xmlns="http://www.w3.org/1999/html">
+          <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <strong>错误!</strong>{{line.error}}
+        </div>
+    {%endfor%}
+{%endif%}
+<form id="add-user-form" action="/settings/add_user/" role="form" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <fieldset>
+                <legend>基本信息</legend>
+                <div class="form-group">
+                     <label for="username">登录用户名</label>
+                     <input type="text" class="form-control input-required" id="username" name="username" placeholder="登录用户名" autofocus >
+                </div>
+                <div class="form-group">
+                     <label for="username_zh">中文名称</label>
+                     <input type="text" class="form-control input-required" id="username_zh" name="username_zh" placeholder="中文名称"  >
+                </div>
+
+                <div class="form-group">
+                     <label for="password">新密码</label>
+                     <input type="password" class="form-control input-required" id="password" name="password"   >
+                 </div>
+                <div class="form-group">
+                     <label for="confirm_password">确认密码</label>
+                     <input type="password" class="form-control input-required" id="confirm_password" name="confirm_password"    >
+                </div>
+
+            </fieldset>
+        </div>
+        <div class="col-md-6">
+            <fieldset>
+                <legend>部门信息</legend>
+                 <div class="form-group">
+                     <label for="mobile">电话号码</label>
+                     <input type="text" class="form-control input-required" id="mobile" name="mobile"  >
+                </div>
+                <div class="form-group">
+                     <label for="department">部门</label>
+                     <select   class="form-control   selectpicker show-tick input-required" id="department" name="department" data-live-search="true">
+                         {% if department_list%}
+                            {% for department in department_list %}
+                                <option value="{{department.id}}">{{department.name}}</option>
+                            {%endfor%}
+                         {%endif%}
+
+                     </select>
+                </div>
+                <div class="form-group">
+                     <label for="position">职位</label>
+                     <select type="text" class="form-control  selectpicker show-tick input-required" id="position" name="position" data-live-search="true" >
+                         {% if position_list%}
+                            {%for position in position_list%}
+                                <option value="{{position.id}}">{{position.name}}</option>
+                            {%endfor%}
+                         {%endif%}
+
+                     </select>
+                </div>
+                <!--<div class="form-group">-->
+                     <!--<label for="chief">上级</label>-->
+                     <!--<input type="text" class="form-control" id="chief" name="chief"   >-->
+                <!--</div>-->
+                <div class="form-group">
+                     <label for="short_phone">短号</label>
+                     <input type="text" class="form-control" id="short_phone" name="short_phone"   >
+                </div>
+                <!--<div class="form-group">-->
+                     <!--<label for="team">团队</label>-->
+                     <!--<input type="text" class="form-control" id="team" name="team"   >-->
+                <!--</div>-->
+            </fieldset>
+        </div>
+    </div>
+
+    <button class="btn btn-lg btn-primary " id="change-password-submit" type="submit">确认添加</button>
+    <a href="/settings/index/" type="button" class="btn btn-lg btn-danger">取消添加</a>
+
+</form>

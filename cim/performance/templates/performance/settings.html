@@ -1,0 +1,41 @@
+{%extends 'base/settings.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'base/bootstrap/css/jquery.datetimepicker.css' %}" />
+
+{%endblock%}
+{%block settings_performance%}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        {%if errorList%}
+            {%for line in errorList%}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <strong>错误!</strong>{{line.error}}
+                </div>
+            {%endfor%}
+        {%endif%}
+        <form id="performance-setting-form" action="/performance/setting/" role="form" method="post">
+            {% csrf_token %}
+            <div class="form-group ">
+                 <label for="start_date">开始日期</label>
+                 <input type="text" class="form-control start—date" id="start_date" name="start_date"  autofocus >
+            </div>
+            <button class="btn btn-lg btn-primary " id="change-password-submit" type="submit">确认</button>
+            <a href="/settings/index/" type="button" class="btn btn-lg btn-danger">取消</a>
+
+        </form>
+    </div>
+</div>
+
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'base/bootstrap/js/jquery.datetimepicker.full.min.js' %}"></script>
+    <script src="{% static 'performance/js/date.js' %}"></script>
+    <script src="{% static 'performance/js/performanceValidator.js' %}"></script>
+
+
+
+{%endblock%}
