@@ -142,21 +142,6 @@
 {
   "fields": {
     "min_score": 0,
-    "prompt": "\u8003\u6838\u671f\u5bf9\u516c\u53f8\u7eaa\u5f8b\u89c4\u5b9a\u9075\u5b88\u60c5\u51b5\uff0c\u4ee5\u53ca\u5173\u952e\u7684\u7ea2\u9ed1\u4e8b\u4ef6",
-    "name": "\u8bda\u4fe1",
-    "key_word": "\u8bda\u4fe1",
-    "max_score": 10,
-    "percent": 5.0,
-    "level_group": 1,
-    "active": false,
-    "assessment": 2
-  },
-  "model": "performance.assessmentline",
-  "pk": 9
-},
-{
-  "fields": {
-    "min_score": 0,
     "prompt": "\u80fd\u591f\u51c6\u786e\u8868\u8fbe\u81ea\u5df1\u7684\u610f\u601d\uff0c\u540c\u65f6\u80fd\u591f\u51c6\u786e\u7406\u89e3\u4ed6\u4eba\u6240\u8bf4\u7684\u8bdd\uff0c\u5e76\u505a\u51fa\u9002\u5f53\u53cd\u9988",
     "name": "\u6c9f\u901a",
     "key_word": "\u5f00\u6717\u3001\u5e7d\u9ed8\u3001\u6b63\u80fd\u91cf\u3001\u8bb2\u9053\u7406\u3001\u6709\u4eb2\u548c\u529b\u3001\u6709\u4fee\u517b\u3001\u5584\u4e8e\u6c9f\u901a",
@@ -613,56 +598,6 @@
   },
   "model": "performance.assessmentlinedetail",
   "pk": 40
-},
-{
-  "fields": {
-    "assessment_line": 9,
-    "description": "\u4e25\u683c\u81ea\u89c9\u9075\u5b88\u5e76\u63d0\u51fa\u6709\u6548\u5efa\u8bae\uff0c\u89e3\u51b3\u5173\u952e/\u91cd\u5927\u95ee\u9898\uff0c\u6216\u7a81\u51fa\u8d21\u732e",
-    "level_group": 1,
-    "level": 1
-  },
-  "model": "performance.assessmentlinedetail",
-  "pk": 41
-},
-{
-  "fields": {
-    "assessment_line": 9,
-    "description": "\u81ea\u89c9\u9075\u5b88\u6ca1\u6709\u8fdd\u7eaa\uff0c\u7cbe\u795e\u72b6\u6001\u826f\u597d",
-    "level_group": 1,
-    "level": 2
-  },
-  "model": "performance.assessmentlinedetail",
-  "pk": 42
-},
-{
-  "fields": {
-    "assessment_line": 9,
-    "description": "\u81ea\u89c9\u9075\u5b88\u6ca1\u6709\u8fdd\u7eaa",
-    "level_group": 1,
-    "level": 3
-  },
-  "model": "performance.assessmentlinedetail",
-  "pk": 43
-},
-{
-  "fields": {
-    "assessment_line": 9,
-    "description": "\u5de5\u4f5c\u51fa\u73b0\u8fc7\u5931\uff0c\u4f46\u4e2a\u522b\u8fdd\u7eaa\u80fd\u81ea\u884c\u53ca\u65f6\u6539\u6b63",
-    "level_group": 1,
-    "level": 4
-  },
-  "model": "performance.assessmentlinedetail",
-  "pk": 44
-},
-{
-  "fields": {
-    "assessment_line": 9,
-    "description": "\u4e2a\u522b\u8fdd\u7eaa\u5728\u7ea0\u6b63\u540e\u6539\u6b63\uff0c\u51fa\u73b0\u4e25\u91cd\u5de5\u4f5c\u8fc7\u5931\u3002",
-    "level_group": 1,
-    "level": 5
-  },
-  "model": "performance.assessmentlinedetail",
-  "pk": 45
 },
 {
   "fields": {
