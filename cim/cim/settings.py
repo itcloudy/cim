@@ -46,7 +46,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap3',
     'base',#基础模块
     'performance',#绩效
     'career',#职业规划

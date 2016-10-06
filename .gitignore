@@ -5,4 +5,4 @@ _build/
 .*
 !.gitignore
 *.py[co]
-
+*/migrations/
