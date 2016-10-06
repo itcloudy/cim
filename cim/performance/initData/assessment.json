@@ -1,0 +1,22 @@
+[
+{
+  "fields": {
+    "chief": true,
+    "level_group": 1,
+    "name": "\u7ee9\u6548(\u4fe1\u606f\u7ba1\u7406\u4e2d\u5fc3)",
+    "mark": "\u52a1\u5b9e"
+  },
+  "model": "performance.assessment",
+  "pk": 1
+},
+{
+  "fields": {
+    "chief": false,
+    "level_group": 1,
+    "name": "\u7d20\u517b",
+    "mark": "\u5fd7\u540c\u9053\u5408\u3001\u5171\u540c\u4ef7\u503c\u89c2 \u7b80\u5355\u3001\u683c\u5c40\u3001\u6709\u5185\u6db5"
+  },
+  "model": "performance.assessment",
+  "pk": 2
+}
+]

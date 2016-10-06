@@ -1,0 +1,182 @@
+[
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u6240\u5b8c\u6210\u7684\u5de5\u4f5c\u80fd\u7ed9\u4e88\u4eba\u6ee1\u610f\u7684\u7a0b\u5ea6",
+    "name": "\u8d28\u91cf",
+    "key_word": "\u4e13\u4e1a",
+    "max_score": 10,
+    "percent": 20.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 1
+  },
+  "model": "performance.assessmentline",
+  "pk": 1
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u672c\u9879\u4e0d\u8003\u8651\u5de5\u4f5c\u8d28\uff0c\u53ea\u8003\u8651\u5de5\u4f5c\u8fdb\u5ea6\u4e0e\u5de5\u4f5c\u91cf",
+    "name": "\u8fdb\u5ea6",
+    "key_word": "\u4e3b\u52a8\u79ef\u6781\u3001\u81ea\u6211\u9a71\u52a8",
+    "max_score": 10,
+    "percent": 20.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 1
+  },
+  "model": "performance.assessmentline",
+  "pk": 2
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u5355\u4f4d\u65f6\u95f4\u5185\u7684\u5de5\u4f5c\u76ee\u6807\u8fbe\u6210\u60c5\u51b5",
+    "name": "\u6548\u7387",
+    "key_word": "\u9ad8\u6548\u3001\u72ec\u7acb\u6027\u3001\u6267\u884c\u529b\u5f3a",
+    "max_score": 10,
+    "percent": 10.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 1
+  },
+  "model": "performance.assessmentline",
+  "pk": 3
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u8003\u8651\u5176\u5bf9\u5de5\u4f5c\u7684\u8d23\u4efb\u611f\uff0c\u4e3b\u4eba\u7fc1\u7cbe\u795e",
+    "name": "\u62c5\u5f53",
+    "key_word": "\u62c5\u5f53\u3001\u8ba4\u771f\u8d1f\u8d23",
+    "max_score": 10,
+    "percent": 7.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 4
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u6d1e\u6089\u4e8b\u6001\u53d1\u5c55\u53ca\u521b\u65b0\u6539\u8fdb\u7684\u610f\u89c1",
+    "name": "\u521b\u65b0",
+    "key_word": "\u6709\u60f3\u6cd5\u3001\u6709\u76ee\u6807\u3001\u6709\u68a6\u60f3",
+    "max_score": 10,
+    "percent": 7.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 5
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u8003\u8651\u5176\u8d21\u732e\u4e8e\u5de5\u4f5c\u7684\u7a0b\u5ea6",
+    "name": "\u62fc\u640f",
+    "key_word": "\u52e4\u594b\u3001\u62fc\u640f\u3001\u6709\u6bc5\u529b\uff0c\u6709\u6fc0\u60c5\u3001\u6297\u538b\u529b",
+    "max_score": 10,
+    "percent": 7.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 6
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u662f\u5426\u613f\u610f\u4e3a\u4eba\u670d\u52a1\uff0c\u6210\u5c31\u4ed6\u4eba",
+    "name": "\u5229\u4ed6",
+    "key_word": "\u4e92\u8865\u3001\u4e50\u4e8e\u52a9\u4eba",
+    "max_score": 10,
+    "percent": 6.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 7
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u662f\u5426\u5177\u5907\u73b0\u4efb\u6240\u8981\u8003\u8651\u5176\u5bf9\u5de5\u4f5c\u3001\u540c\u4e8b\u3001\u516c\u53f8\u4e4b\u6001\u5ea6\uff0c\u53ca\u4e0e\u4eba\u5408\u4f5c\uff1b\u662f\u5426\u613f\u610f\u5c1d\u8bd5\u65b0\u89c2\u5ff5\u3001\u65b0\u65b9\u6cd5",
+    "name": "\u5f00\u653e",
+    "key_word": "\u5f00\u653e\u3001\u5305\u5bb9\u3001\u809a\u91cf\u3001\u59a5\u534f\u3001\u4e0d\u8ba1\u8f83",
+    "max_score": 10,
+    "percent": 6.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 8
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u80fd\u591f\u51c6\u786e\u8868\u8fbe\u81ea\u5df1\u7684\u610f\u601d\uff0c\u540c\u65f6\u80fd\u591f\u51c6\u786e\u7406\u89e3\u4ed6\u4eba\u6240\u8bf4\u7684\u8bdd\uff0c\u5e76\u505a\u51fa\u9002\u5f53\u53cd\u9988",
+    "name": "\u6c9f\u901a",
+    "key_word": "\u5f00\u6717\u3001\u5e7d\u9ed8\u3001\u6b63\u80fd\u91cf\u3001\u8bb2\u9053\u7406\u3001\u6709\u4eb2\u548c\u529b\u3001\u6709\u4fee\u517b\u3001\u5584\u4e8e\u6c9f\u901a",
+    "max_score": 10,
+    "percent": 5.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 10
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u63a5\u53d7\u65b0\u77e5\u8bc6\u7684\u80fd\u529b\uff0c\u662f\u5426\u80fd\u8bb0\u5fc6\u3001\u9075\u5faa\u5e76\u4e88\u4ee5\u5e94\u7528",
+    "name": "\u5b66\u4e60",
+    "key_word": "\u81ea\u6211\u7a81\u7834",
+    "max_score": 10,
+    "percent": 5.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 11
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u8003\u5bdf\u662f\u5426\u4e50\u4e8e\u5206\u4eab",
+    "name": "\u5206\u4eab",
+    "key_word": "\u9605\u5386\u3001\u5206\u4eab",
+    "max_score": 10,
+    "percent": 2.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 12
+},
+{
+  "fields": {
+    "min_score": 0,
+    "prompt": "\u8003\u5bdf\u5728\u5fc5\u8981\u60c5\u51b5\u4e0b\uff0c\u73b0\u573a\u5904\u7f6e\u80fd\u529b",
+    "name": "\u51b3\u65ad",
+    "key_word": "\u51b3\u65ad",
+    "max_score": 10,
+    "percent": 2.0,
+    "level_group": 1,
+    "active": true,
+    "assessment": 2
+  },
+  "model": "performance.assessmentline",
+  "pk": 13
+}
+]

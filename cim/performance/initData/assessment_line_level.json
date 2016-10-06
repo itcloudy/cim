@@ -1,0 +1,62 @@
+[
+{
+  "fields": {
+    "min_score": 9.0,
+    "group": 1,
+    "name": "\u4f18\u79c0\uff0810~9\u5206\uff09",
+    "sequence": 5,
+    "result": "\u664b\u5347\u9aa8\u5e72",
+    "max_score": 10.0
+  },
+  "model": "performance.assessmentlinelevel",
+  "pk": 1
+},
+{
+  "fields": {
+    "min_score": 7.5,
+    "group": 1,
+    "name": "\u826f\u597d\uff088.9~7.5\u5206\uff09",
+    "sequence": 4,
+    "result": "\u5956\u916c\u57f9\u517b",
+    "max_score": 8.9
+  },
+  "model": "performance.assessmentlinelevel",
+  "pk": 2
+},
+{
+  "fields": {
+    "min_score": 6.0,
+    "group": 1,
+    "name": "\u4e00\u822c\uff087.5~6\u5206\uff09",
+    "sequence": 3,
+    "result": "\u5408\u683c",
+    "max_score": 7.4
+  },
+  "model": "performance.assessmentlinelevel",
+  "pk": 3
+},
+{
+  "fields": {
+    "min_score": 5.0,
+    "group": 1,
+    "name": "\u7ee9\u6548\u6539\u8fdb\uff085.9~5\uff09",
+    "sequence": 2,
+    "result": "\u7559\u7528\u5bdf\u770b",
+    "max_score": 5.9
+  },
+  "model": "performance.assessmentlinelevel",
+  "pk": 4
+},
+{
+  "fields": {
+    "min_score": 0.0,
+    "group": 1,
+    "name": "\u4e0d\u5408\u683c\uff085\u5206\u4ee5\u4e0b\uff09",
+    "sequence": 1,
+    "result": "\u6dd8\u6c70",
+    "max_score": 4.9
+  },
+  "model": "performance.assessmentlinelevel",
+  "pk": 5
+}
+]

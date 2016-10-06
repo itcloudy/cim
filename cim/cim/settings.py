@@ -104,7 +104,7 @@ WSGI_APPLICATION = 'cim.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cim',
+        'NAME': 'cim1',
         'USER': 'django',
         'PASSWORD': 'django',
         'HOST': '127.0.0.1',
