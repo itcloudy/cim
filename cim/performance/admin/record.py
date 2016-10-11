@@ -14,7 +14,7 @@ from ..models import Record,MonthRecord,MonthScore
 class RecordAdmin(admin.ModelAdmin):
     '''打分记录后台管理'''
     list_display = ['id','wait_higher','wait_self','month_record','owner','assessment_line','mark','score','done','date_time','mark_time']
-    list_filter = ['month_record','owner','assessment_line','done']
+    list_filter = ['month_record','mark','owner','assessment_line','done']
     search_fields = ['owner']
 
 
