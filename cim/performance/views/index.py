@@ -73,8 +73,7 @@ def setting(request):
         exsit_list = []
         #所有的相关人
         for stakeholder in all_stakeholder_list:
-            if stakeholder.person.id ==25:
-                pass
+
             date_times = MonthRecord.objects.filter(owner__id = stakeholder.person.id).datetimes('date_time', 'month')
             time_exsit_list = []
             for date_time in date_times:

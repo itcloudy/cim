@@ -45,12 +45,12 @@ def list(request):
     #判断是否有下级评定项
     lower_records = Record.objects.filter(wait_higher=True,done=False,mark__id=request.user.id)
     lower_list = []
-    lower_mark_list = []
+    lower_owner_list = []
     for lower_record in lower_records:
-        mark_id = lower_record.mark.id
-        if mark_id not in lower_mark_list:
-            lower_mark_list.append(lower_record.mark.id)
-            lower_list.append({'id': lower_record.owner.id, 'name': lower_record.owner.username_zh})
+        low_owner_id = lower_record.owner.id
+        if low_owner_id not in lower_owner_list:
+            lower_owner_list.append(low_owner_id)
+            lower_list.append({'id': low_owner_id, 'name': lower_record.owner.username_zh})
         # 获得某个人的评定项
         if user_id ==lower_record.owner.id:
             context['performance_details'] = performance_form(request, user_id)
