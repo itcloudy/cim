@@ -168,9 +168,11 @@ def action_post(request):
         done = False
     user_id = None
     error = False
+    done_list = []
     for postParamKey in postParamKeys:
         if 'record' in postParamKey:
             record_id = postParamKey.split('_')[1]
+            done_list.append(record_id)
             record_id = int(record_id)
             record = Record.objects.get(id=record_id)
             user_id = record.owner.id
@@ -182,8 +184,10 @@ def action_post(request):
                     break
             record.score = score
             record.mark_time =  datetime.now().strftime(SERVER_DATETIME_FORMAT)
-            record.done = done
+
             record.save()
+    if not error:
+        Record.objects.filter(id__in=done_list).update(done=True)
     #临时保存返回原来的页面
     if (not_done or error) and user_id:
         url = '/performance/list/?user_id=%s' % user_id
@@ -213,8 +217,11 @@ def check_done(request):
 
         for month_record in month_records:
             # 保存不同人员的打分结果
+            #自己
             self_assessment_line_dict = {}
+            #上级
             higher_assessment_line_dict = {}
+            #相关人
             relevant_assessment_line_dict = {}
             assessment_line_list = []
 
@@ -269,7 +276,7 @@ def check_done(request):
 
                             total_score += float(score*assessment_line_percent_dict.get(assessment_line_id,0))/100
                             month_score.score = score
-                            print total_score,score
+
                             month_score.save()
                 month_record.score = total_score
                 month_record.save()

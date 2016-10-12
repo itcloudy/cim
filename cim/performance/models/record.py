@@ -69,7 +69,7 @@ class Record(models.Model):
     wait_self = models.BooleanField(verbose_name=u'自评项',default=False)
     owner = models.ForeignKey('base.User',related_name='record_owner',verbose_name=u'得分人',null=False)
     mark = models.ForeignKey('base.User',related_name='record_mark',verbose_name=u'打分人',null=True,blank=True)
-    score = models.FloatField(default=-1,verbose_name=u'得分')
+    score = models.FloatField(default=0,verbose_name=u'得分')
     date_time = models.DateTimeField(verbose_name=u'开始时间',null=True,blank=True)
     mark_time = models.DateTimeField(verbose_name=u'打分时间',null=True,blank=True)
     done = models.BooleanField(verbose_name=u'完成',default=False)
