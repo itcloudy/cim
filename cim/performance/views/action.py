@@ -60,12 +60,12 @@ def list(request):
     #判断是否有相关人评定项
     stakeholder_records = Record.objects.filter(wait_higher=False,done=False, mark__id=request.user.id).exclude(owner__id=request.user.id)
     stakeholder_list = []
-    stakeholder_mark_list = []
+    stakeholder_owner_list = []
     for stakeholder_record in stakeholder_records:
-        mark_id = stakeholder_record.mark.id
-        if mark_id not in stakeholder_mark_list:
-            stakeholder_mark_list.append(stakeholder_record.mark.id)
-            stakeholder_list.append({'id':stakeholder_record.owner.id,'name':stakeholder_record.owner.username_zh})
+        owner_id = stakeholder_record.owner.id
+        if owner_id not in stakeholder_owner_list:
+            stakeholder_owner_list.append(owner_id)
+            stakeholder_list.append({'id':owner_id,'name':stakeholder_record.owner.username_zh})
         #获得某个人的评定项
         if user_id ==stakeholder_record.owner.id:
             context['performance_details'] = performance_form(request, user_id)
