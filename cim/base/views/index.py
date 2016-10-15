@@ -40,7 +40,7 @@ def login(request):
                 context['error'] = u"用户名或密码错误"
         else:
             context['error'] = u"用户名或密码错误"
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/performance/index/')
     else:
         return HttpResponseRedirect('/')
 
