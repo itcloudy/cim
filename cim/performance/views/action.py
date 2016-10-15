@@ -14,7 +14,7 @@ import math
 from  datetime import  datetime
 from ..models import MonthRecord,Config,Stakeholder,MonthScore
 from base.models import User
-from ..common import mean
+from ..common import mean,average
 SERVER_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
@@ -261,9 +261,9 @@ def check_done(request):
                 if assessment_line_list:
                     for assessment_line_id in assessment_line_list:
 
-                        self_score = mean(self_assessment_line_dict.get(assessment_line_id,[]))
-                        higher_score = mean(higher_assessment_line_dict.get(assessment_line_id, []))
-                        relevant_score = mean(relevant_assessment_line_dict.get(assessment_line_id, []))
+                        self_score = average(self_assessment_line_dict.get(assessment_line_id,[]))
+                        higher_score = average(higher_assessment_line_dict.get(assessment_line_id, []))
+                        relevant_score = average(relevant_assessment_line_dict.get(assessment_line_id, []))
                         #将结果写入数据库中
                         month_score = MonthScore.objects.filter(assessment_line__id = assessment_line_id,month_record=month_record,owner__id=user_id)
                         if month_score:
@@ -278,7 +278,7 @@ def check_done(request):
                             month_score.score = score
 
                             month_score.save()
-                month_record.score = float(total_score/all_percent)
+                month_record.score = round(float(total_score/all_percent),1)
                 month_record.save()
 
 
