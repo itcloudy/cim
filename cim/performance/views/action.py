@@ -262,9 +262,9 @@ def check_done(request):
                 if assessment_line_list:
                     for assessment_line_id in assessment_line_list:
 
-                        self_score = average(self_assessment_line_dict.get(assessment_line_id,[]))
-                        higher_score = average(higher_assessment_line_dict.get(assessment_line_id, []))
-                        relevant_score = average(relevant_assessment_line_dict.get(assessment_line_id, []))
+                        self_score = mean(self_assessment_line_dict.get(assessment_line_id,[]))
+                        higher_score = mean(higher_assessment_line_dict.get(assessment_line_id, []))
+                        relevant_score = mean(relevant_assessment_line_dict.get(assessment_line_id, []))
                         #将结果写入数据库中
                         month_score = MonthScore.objects.filter(assessment_line__id = assessment_line_id,month_record=month_record,owner__id=user_id)
                         if month_score:

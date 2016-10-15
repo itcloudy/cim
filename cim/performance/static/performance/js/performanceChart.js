@@ -33,6 +33,8 @@ var showPerformanceTrendChart = function(idObj){
             xAxis_data = json_data.xAxis_data || [];
             yAxis_left_data = json_data.yAxis_left_data || [];
             series = json_data.series || [];
+            series[0]['itemStyle'] = { normal: {label : {show: true}}};
+
             renderChart();
         }
     });
