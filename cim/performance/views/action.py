@@ -127,7 +127,7 @@ def performance_form(request,user_id):
                     assessment_line_list = []
                     for assessment_line in assessment_lines:
                         line_dict = {}
-                        line_dict['name'] = assessment_line.name or "-"
+                        line_dict['name'] = "%s(%s%)"%(assessment_line.name or "-",assessment_line.percent)
 
                         #获得已经保存的分数
                         record = Record.objects.filter(done=False,owner=user,assessment_line=assessment_line,mark=request.user)
@@ -273,9 +273,10 @@ def check_done(request):
                                 score =float(self_score*self_weight+higher_score*higher_weight+relevant_score*relevant_weight)/(self_weight+higher_weight+relevant_weight)
                             else:
                                 score = float( self_score * self_weight + higher_score * higher_weight + relevant_score * relevant_weight) / ( self_weight + higher_weight)
+                            score = round(score,2)
                             all_percent += assessment_line_percent_dict.get(assessment_line_id,0)
                             total_score += score*assessment_line_percent_dict.get(assessment_line_id,0)
-                            month_score.score = score
+                            month_score.score = round(score,2)
 
                             month_score.save()
                 month_record.score = round(float(total_score/all_percent),1)
