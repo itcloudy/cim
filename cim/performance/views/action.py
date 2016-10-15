@@ -127,7 +127,7 @@ def performance_form(request,user_id):
                     assessment_line_list = []
                     for assessment_line in assessment_lines:
                         line_dict = {}
-                        line_dict['name'] = "%s(%s%)"%(assessment_line.name or "-",assessment_line.percent)
+                        line_dict['name'] = "%s(%s%%)"%(assessment_line.name or "-",assessment_line.percent)
 
                         #获得已经保存的分数
                         record = Record.objects.filter(done=False,owner=user,assessment_line=assessment_line,mark=request.user)
