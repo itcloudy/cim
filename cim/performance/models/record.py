@@ -41,7 +41,7 @@ class MonthRecord(models.Model):
     date_time = models.DateTimeField(verbose_name=u'开始时间', null=True, )
     owner = models.ForeignKey('base.User', related_name='month_record_owner', verbose_name=u'得分人', null=False)
     done = models.BooleanField(verbose_name=u'完成', default=False)
-    score = models.FloatField(default=-1, verbose_name=u'总分')
+    score = models.FloatField(default=0, verbose_name=u'总分')
     def name(self):
         '''名称'''
         if self.date_time:
