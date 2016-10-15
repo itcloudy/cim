@@ -37,3 +37,18 @@ class Stakeholder(models.Model):
         verbose_name_plural = u'相关人管理'
 
 
+class ResultCheck(models.Model):
+    """结果查看"""
+    user = models.ForeignKey('base.User',related_name='check_user',verbose_name=u'查看人',unique=True)
+    department = models.ManyToManyField('base.Department',related_name='check_department',verbose_name=u'部门')
+
+    def __unicode__(self):
+        if self.user:
+
+            return self.user.username_zh
+        else:
+            return '-'
+
+    class Meta:
+        verbose_name = u'结果查看'
+        verbose_name_plural = u'结果查看管理'

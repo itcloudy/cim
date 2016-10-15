@@ -11,3 +11,4 @@ from action import *
 from detail import  *
 from histoty import *
 from month_detail import *
+from result import *

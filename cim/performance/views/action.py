@@ -176,17 +176,16 @@ def action_post(request):
             record_id = int(record_id)
             record = Record.objects.get(id=record_id)
             user_id = record.owner.id
-            score = float(request.POST.get(postParamKey,-1))
+            score = float(request.POST.get(postParamKey,0))
+            ad_score = round(score,1)
             if done:
-                ad_score = int(math.floor(score))
                 if ad_score>10 or ad_score<0:
                     error =True
                     break
-            record.score = score
+            record.score = ad_score
             record.mark_time =  datetime.now().strftime(SERVER_DATETIME_FORMAT)
-
             record.save()
-    if not error:
+    if not error and done:
         Record.objects.filter(id__in=done_list).update(done=True)
     #临时保存返回原来的页面
     if (not_done or error) and user_id:
@@ -257,6 +256,7 @@ def check_done(request):
                                                                           relevant_records]
                 #考核总分
                 total_score = 0
+                all_percent = 0
                 #对打分结果进行统计
                 if assessment_line_list:
                     for assessment_line_id in assessment_line_list:
@@ -273,12 +273,12 @@ def check_done(request):
                                 score =float(self_score*self_weight+higher_score*higher_weight+relevant_score*relevant_weight)/(self_weight+higher_weight+relevant_weight)
                             else:
                                 score = float( self_score * self_weight + higher_score * higher_weight + relevant_score * relevant_weight) / ( self_weight + higher_weight)
-
-                            total_score += float(score*assessment_line_percent_dict.get(assessment_line_id,0))/100
+                            all_percent += assessment_line_percent_dict.get(assessment_line_id,0)
+                            total_score += score*assessment_line_percent_dict.get(assessment_line_id,0)
                             month_score.score = score
 
                             month_score.save()
-                month_record.score = total_score
+                month_record.score = float(total_score/all_percent)
                 month_record.save()
 
 

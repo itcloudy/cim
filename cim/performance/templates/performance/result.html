@@ -1,0 +1,87 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'performance/js/performance.js' %}"></script>
+{%endblock%}
+{%block mainblock%}
+    {%if performInfo%}
+        <div class="alert alert-warning alert-dismissible" role="alert" xmlns="http://www.w3.org/1999/html">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <p><strong>您有未完成的绩效考核</strong><a href="/performance/list/?detail=1">点击进入</a></p>
+        </div>
+    {%endif%}
+    {%if error%}
+    <div class="alert alert-danger alert-dismissible" role="alert" xmlns="http://www.w3.org/1999/html">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       {{error}}
+    </div>
+    {%else%}
+    <div class="row">
+        <div class="col-md-12">
+            <select class="department-select" name="department" >
+                {%for department in department_list%}
+                    <option value="{{department.id}}">{{department.name}}</option>
+                {%endfor%}
+             </select>
+            <select class="month-select" name="month" >
+                <option value="">全部月份</option>
+                {%for month in month_list%}
+                    <option value="{{month.id}}">{{month.name}}</option>
+                {%endfor%}
+            </select>
+            <input type="text"  name="name"  class='name-search' placeholder="输入要查询的人"/>
+        </div>
+        <div class="col-md-12" id="result-info">
+            {%if result_data%}
+            <br/>
+            <table class="table table-hover table-condensed table-striped table-bordered">
+                <thead>
+                    <tr>
+                        {%for title_line in  result_data.table_title%}
+                            <th>{{title_line}}</th>
+                        {%endfor%}
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for one_line in result_data.table_list%}
+                        <tr>
+                            {%for one_cell in one_line%}
+                                <td>{{one_cell}}</td>
+                            {%endfor%}
+                        </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if result_data.previous %}
+                        <a href="/performance/result/?department={{cur_department}}&month={{month}}&name={{name}}&page={{result_data.previous}}">上一页</a>
+                    {% endif %}
+                    <span class="current">
+                        当前页: {{ result_data.current_page }}
+                        共{{ result_data.all_page }}页
+                    </span>
+                    {% if result_data.next %}
+                        <a href="/performance/result/?department={{cur_department}}&month={{month}}&name={{name}}&page={{result_data.next}}">下一页</a>
+                    {% endif %}
+                </span>
+            </div>
+            {%else%}
+                <div class="alert alert-danger alert-dismissible" role="alert" xmlns="http://www.w3.org/1999/html">
+                  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                   没有对应的搜索结果，请更改搜索条件
+                </div>
+            {%endif%}
+        </div>
+
+    </div>
+
+    {%endif%}
+
+{%endblock%}

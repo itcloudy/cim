@@ -31,6 +31,10 @@ $(document).ready(function(){
                         field: 'new_password',
                         message: '新密码和确认密不一致',
                     },
+                    different: {
+                        field: 'old_password',
+                        message: '新密码不能和旧密码相同'
+                    }
                  }
             },
             confirm_password:{

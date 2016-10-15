@@ -9,7 +9,20 @@ from  django.db import  models
 from .assessment import AssessmentLine
 from datetime import datetime
 
+class MonthPerformance(models.Model):
+    '''月份'''
+    month = models.CharField(max_length=20,verbose_name=u'部门月份考核',null=False,blank=True)
+    department = models.ForeignKey('base.Department',related_name='month_department',verbose_name=u'部门')
+    def __unicode__(self):
+        if self.month and self.department:
+            return "%s(%s)" %(self.department.name,self.month)
+        else:
+            return '-'
 
+    class Meta:
+        ordering = ['-id']
+        verbose_name = u'月份'
+        verbose_name_plural = u'月份管理'
 
 class MonthRecord(models.Model):
     '''月度考核'''
@@ -20,12 +33,12 @@ class MonthRecord(models.Model):
             return '-'
 
     class Meta:
-        ordering = ['id']
+        ordering = ['-id']
         verbose_name = u'月度考核'
         verbose_name_plural = u'月度考核管理'
 
-
-    date_time = models.DateTimeField(verbose_name=u'开始时间', null=True, blank=True)
+    month = models.ForeignKey('MonthPerformance',verbose_name=u'月份' )
+    date_time = models.DateTimeField(verbose_name=u'开始时间', null=True, )
     owner = models.ForeignKey('base.User', related_name='month_record_owner', verbose_name=u'得分人', null=False)
     done = models.BooleanField(verbose_name=u'完成', default=False)
     score = models.FloatField(default=-1, verbose_name=u'总分')

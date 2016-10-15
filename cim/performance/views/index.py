@@ -7,37 +7,54 @@ Created on 2016/9/21
 '''
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from datetime import datetime
 import random
 SERVER_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-from ..models import  Stakeholder, Record,MonthRecord,Config
+from ..models import  Stakeholder, Record,MonthRecord,Config,ResultCheck
 from ..common import create_record,create_month_score_record
-
+from base.models import Department
 
 @login_required
 def index(request):
     '''绩效首页'''
     context = {}
-    # 判断是否有未完成的考核
-    wait_action = Record.objects.filter(mark__id=request.user.id, done=False)
+    user = request.user
+    #判断是否有绩效查看的权限
+    resultCheck = ResultCheck.objects.filter(user=user)
+    if resultCheck:
+        resultCheck = resultCheck[0]
+        departments = resultCheck.department.all()
+        charge_department = Department.objects.filter(charge=request.user)
+        charge_department = charge_department and charge_department[0]
+        department_id = ''
+        if charge_department in departments:
+            department_id = charge_department.id
+        else:
+            department_id = departments[0].id
 
-    if wait_action:
-        context['performInfo'] = True
-    month_records = MonthRecord.objects.filter(owner=request.user)
-    month_record_list = []
-    for month_record in month_records:
-        value = {
-            'date': month_record.date(),
-            'id': month_record.id,
-            'score': month_record.score
-        }
-        if not month_record.done:
-            value['score'] = u'未完成'
-        month_record_list.append(value)
-    if month_record_list:
-        context['month_record_list'] = month_record_list
-    return render(request, 'performance/index.html', context)
+        return HttpResponseRedirect('/performance/result/?department=%s' % department_id)
+    else:
+        # 判断是否有未完成的考核
+        wait_action = Record.objects.filter(mark__id=user.id, done=False)
+
+        if wait_action:
+            context['performInfo'] = True
+        month_records = MonthRecord.objects.filter(owner=request.user)
+        month_record_list = []
+        for month_record in month_records:
+            value = {
+                'date': month_record.date(),
+                'id': month_record.id,
+                'score': month_record.score
+            }
+            if not month_record.done:
+                value['score'] = u'未完成'
+            month_record_list.append(value)
+        if month_record_list:
+            context['month_record_list'] = month_record_list
+        return render(request, 'performance/index.html', context)
 
 
 @login_required

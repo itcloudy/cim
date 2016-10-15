@@ -27,6 +27,8 @@ urlpatterns = [
     #url(r'^detail/$', views.detail, name='detail'),
     # 绩效考核月度详情
     url(r'^month_detail/$', views.month_detail, name='month_detail'),
+    #结果查看
+    url(r'^result/$',views.result,name='result'),
 
 
 

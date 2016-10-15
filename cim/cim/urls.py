@@ -16,8 +16,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.conf import settings
 from django.conf.urls.static import static
+import  settings
 
 urlpatterns = [
     #后台
@@ -29,9 +29,8 @@ urlpatterns = [
     #基础功能
     url(r'',include('base.urls',namespace='base',app_name='base')),
 
-
 ]
 
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

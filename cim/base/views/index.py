@@ -92,7 +92,7 @@ def change_password(request):
                         logout(request)
                         return HttpResponseRedirect('/')
                 else:
-                    errorList.append({'error':u'密码不对'})
+                    errorList.append({'error':u'旧密码不对'})
         if errorList:
             context['errorList'] = errorList
         return render(request, 'base/settings.html', context)

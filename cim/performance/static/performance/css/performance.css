@@ -9,3 +9,17 @@
     float:right;
     color:red;
 }
+.department-select{
+    width:200px;
+    height:30px;
+    border-radius:2px 2px;
+}
+.month-select{
+    width:100px;
+    height:30px;
+    border-radius:2px 2px;
+}
+.name-search{
+    width:200px;
+    height:30px;
+}
