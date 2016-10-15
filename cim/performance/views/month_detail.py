@@ -18,7 +18,7 @@ def month_detail(request):
     context= {}
     month_id = request.GET.get('month_id',None)
     data_list = []
-    table_title = [u'考核项',u'平均分',u'自己']
+    table_title = [u'考核项',u'得分',u'自己']
     if month_id:
         user = request.user
 
