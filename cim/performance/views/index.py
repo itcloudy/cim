@@ -12,7 +12,7 @@ from datetime import datetime
 import random
 SERVER_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-from ..models import  Stakeholder, Record,MonthRecord,Config,ResultCheck
+from ..models import  Stakeholder, Record,MonthRecord,Config,ResultCheck,MonthPerformance
 from ..common import create_record,create_month_score_record
 from base.models import Department
 
@@ -74,6 +74,7 @@ def setting(request):
         else:
             start_date = datetime.now().strftime(SERVER_DATETIME_FORMAT)
         adjust_time = start_date.strftime("%Y-%m")
+
         # 判断是否有该月份的考核信息生成
         # date_times = MonthRecord.objects.datetimes('date_time', 'month')
         # time_exsit_list = []
@@ -90,7 +91,12 @@ def setting(request):
         exsit_list = []
         #所有的相关人
         for stakeholder in all_stakeholder_list:
-
+            monthPerformance = MonthPerformance.objects.filter(department = stakeholder.person.department,month=adjust_time)
+            if monthPerformance:
+                monthPerformance = monthPerformance[0]
+            else:
+                monthPerformance = MonthPerformance(department=stakeholder.person.department, month=adjust_time)
+                monthPerformance.save()
             date_times = MonthRecord.objects.filter(owner__id = stakeholder.person.id).datetimes('date_time', 'month')
             time_exsit_list = []
             for date_time in date_times:
@@ -101,6 +107,7 @@ def setting(request):
 
             # 创建月份考核信息
             month_record = MonthRecord(
+                month = monthPerformance,
                 date_time=start_date,
                 owner=stakeholder.person
             )
