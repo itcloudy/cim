@@ -107,8 +107,8 @@ DATABASES = {
         'NAME': 'cim',
         'USER': 'django',
         'PASSWORD': 'django',
-        'HOST': '127.0.0.1',
-        # 'HOST':'192.168.21.141',
+        # 'HOST': '127.0.0.1',
+        'HOST':'192.168.21.141',
         'PORT': '5432',
     }
 }

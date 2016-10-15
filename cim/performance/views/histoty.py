@@ -33,7 +33,8 @@ def history(request):
         for month_score in month_scores:
             value['data'].append(month_score.score)
             if table_title_flag:
-                table_title_list.append(month_score.assessment_line.name)
+                title = "%s(%s)%%"%(month_score.assessment_line.name,month_score.assessment_line.percent)
+                table_title_list.append()
         table_title_flag = False
         month_record_list.append(value)
 

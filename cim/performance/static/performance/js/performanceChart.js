@@ -58,6 +58,7 @@ var showPerformanceTrendChart = function(idObj){
                     saveAsImage : {show: true}
                 }
             },
+            itemStyle : { normal: {label : {show: true}}},
             calculable : true,
             xAxis : [
                 {

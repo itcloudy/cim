@@ -190,3 +190,18 @@ $(".name-search").change(function(e){
     });
 
 });
+//$(".form-assessment-line").change(function(e){
+//
+//    var node = $('li.active')[0];
+//    if (node != undefined){
+//        var score_list = $(".form-assessment-line");
+//        console.log(score_list);
+//        var len = score_list.length;
+//        var sum = 0;
+//        for(var i=0;i<len;i++){
+//            var nodeChild = score_list[i];
+//            console.log(nodeChild.attributes('data-percent'));
+//        }
+//    }
+//    console.log(node);
+//});
