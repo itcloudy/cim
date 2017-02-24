@@ -8,3 +8,4 @@ Created on 2016/9/19
 '''
 from login import *
 from change_password import *
+from reset_password import *

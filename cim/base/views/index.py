@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import  login_required
-from ..forms import loginForm,passForm
+from ..forms import loginForm,passForm,resetPasswordForm
 from .user import *
 from base.models import  User
 
@@ -63,10 +63,35 @@ def settings(request,style=''):
 
         return change_password(request)
     elif style == 'add_user':
-
-        return  add_user(request)
+        return add_user(request)
+    elif style == 'reset_password':
+        return reset_password(request)
     return render(request, 'base/settings.html', context)
 
+@login_required
+def reset_password(request):
+    """重置密码"""
+    context = {}
+    context['reset_password'] = True
+    errorList = []
+    if request.method == "POST":
+        resetForm = resetPasswordForm(request.POST)
+        if resetForm.is_valid():
+            new_password = resetForm.data['new_password']
+            confirm_password = resetForm.data['confirm_password']
+            username = resetForm.data["username"]
+            user = User.objects.get(username=username)
+
+            if new_password != confirm_password:
+                errorList.append({'error': u'密码不一致'})
+            if user:
+                user.set_password(confirm_password)
+                user.save()
+        if errorList:
+            context['errorList'] = errorList
+        return render(request, 'base/settings.html', context)
+    else:
+        return render(request, 'base/settings.html', context)
 @login_required
 def change_password(request):
     '''修改密码'''

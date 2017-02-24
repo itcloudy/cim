@@ -14,10 +14,11 @@
                 <th>考核维度</th>
                 <th>考核项</th>
                 <th>评价内容</th>
+                <th>关键字</th>
                 {%for title in detail.title_list%}
                    <th>{{title}}</th>
                 {%endfor%}
-                <th>关键字</th>
+
                 <th>得分</th>
             </tr>
         </thead>
@@ -30,10 +31,10 @@
                      {%endif%}
                      <th>{{assessment_line.name}}</th>
                      <td>{{assessment_line.prompt}}</td>
+                     <td>{{assessment_line.key_word}}</td>
                     {%for line_name in assessment_line.detail_list%}
                         <td>{{line_name}}</td>
                     {%endfor%}
-                     <td>{{assessment_line.key_word}}</td>
                      <td>
                          <input type="text" data-percent={{assessment_line.percent}} value="{{assessment_line.value}}" name="{{assessment_line.record_id}}" class="form-assessment-line" id="{{assessment_line.record_id}}" required>
                      </td>

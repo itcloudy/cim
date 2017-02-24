@@ -34,16 +34,18 @@ def month_detail(request):
             table_title.append(u'相关人%s'% i)
         for month_score in month_scores:
             line_list = []
+            if not month_score.month_record:
+                continue
             assessment_line = month_score.assessment_line
             #考核项
             line_list.append(assessment_line.name)
             #平均分
             line_list.append(month_score.score)
-            self_record = Record.objects.get(assessment_line=assessment_line, owner=user, mark=user, month_record=month_score.month_record)
+            self_record = Record.objects.get(assessment_line=assessment_line, owner=user, mark=user, month_record= month_score.month_record)
             line_list.append(self_record.score)
             #获得上级的分数
             for higher in highers:
-                record = Record.objects.get(assessment_line= assessment_line,owner=user,mark=higher,month_record=month_score.month_record)
+                record = Record.objects.get(assessment_line= assessment_line,owner=user,mark=higher,month_record= month_score.month_record)
                 line_list.append(record.score)
             #获得相关人评分
             if assessment_line.assessment.chief:
@@ -51,9 +53,10 @@ def month_detail(request):
                     line_list.append('-')
             else:
                 for relevant in relevants:
-                    record = Record.objects.get(assessment_line=assessment_line, owner=user, mark=relevant,
-                                                month_record=month_score.month_record)
-                    line_list.append(record.score)
+                    record = Record.objects.all().filter(assessment_line=assessment_line, owner=user, mark=relevant, month_record=month_score.month_record)
+                    if len(record)>0:
+                        record = record[0]
+                        line_list.append(record.score)
             data_list.append(line_list)
     if data_list:
         context['data_list'] = data_list
