@@ -25,6 +25,9 @@
         <div class="navbar-header">
             <a href="/" class="navbar-brand" id="title-home">信息管理中心&nbsp;<span class="glyphicon glyphicon-home"></span></a>
         </div>
+        <ul class="nav nav-pills">
+          <li role="presentation" class="{{homeActive}}"><a href="/">首页</a></li>
+            <li role="presentation"  class="{{performanceActive}}"><a href="/performance/index/">绩效考核</a></li>
         <ul class="nav navbar-nav navbar-right">
             <!--<li class="dropdown">
                 <a href="" class="dropdown-toggle" data-toggle="dropdown">消息 <sup><span class="badge">42</span></sup><span class="caret"></span></a>
@@ -40,10 +43,11 @@
                     <ul class="dropdown-menu" role="menu">
                         {%if user.username %}
                         <li><a href="/logout/">注销</a></li>
-                        {#<!--<li><a href="/change_password/">修改密码</a></li>-->#}
-                        {%endif%}
-                        {% if user.is_superuser%}
                         <li><a href="/settings/index/">设置</a></li>
+
+                        {%endif%}
+
+                        {% if user.is_superuser%}
                         <li><a href="/admin/">进入后台</a></li>
                         {% endif%}
                     </ul>
@@ -53,6 +57,7 @@
                     <li><a href="#" data-toggle="modal" data-target="#loginModal">登录</a></li>
                 </li>
             {%endif%}
+        </ul>
         </ul>
     </div>
 </nav>

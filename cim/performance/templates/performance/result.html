@@ -51,7 +51,11 @@
                     {%for one_line in result_data.table_list%}
                         <tr>
                             {%for one_cell in one_line%}
+                            {% if forloop.last%}
+                                <td><a href="/performance/month_detail/?month_id={{one_cell}}">详情</a></td>
+                            {% else %}
                                 <td>{{one_cell}}</td>
+                            {% endif %}
                             {%endfor%}
                         </tr>
                     {%endfor%}

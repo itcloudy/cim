@@ -6,7 +6,13 @@
     padding:30px 30px;
 
 }
-
+.nav-pills{
+    border-bottom:none;
+    margin-top:2px;
+}
+.container {
+    width: 1570px;
+}
 .title-core{
     color:red;
     text-align:center;

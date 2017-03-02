@@ -17,12 +17,33 @@ from base.models import User
 from ..common import mean,average
 SERVER_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
+@login_required
+def newlist(request):
+    """改进打分页面"""
+    context = {}
+    context["performanceActive"] = "active"
+    user_id = request.user.id
+    #获得相关人
+
+    department_id  = request.user.department.id
+    config = Config.objects.get(department__id = department_id)
+    assessments= config.assessment.all()
+    performanceTitle = []
+    for line in assessments:
+        assessmentLines = AssessmentLine.objects.filter(assessment__id = line.id)
+        for j in assessmentLines:
+            performanceTitle.append(j.name)
+    context['performanceTitle'] = performanceTitle
+
+    # assessmentLines = AssessmentLine.objects.filter(active=True,)
+    return render(request, 'performance/newlist.html', context)
 
 @login_required
 def list(request):
     '''考核打分'''
     context = {}
 
+    context["performanceActive"]= "active"
     user_id = request.GET.get('user_id','0')
     user_id = int(user_id)
     if user_id:

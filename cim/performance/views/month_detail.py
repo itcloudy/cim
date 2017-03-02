@@ -8,7 +8,7 @@ Created on 2016/9/30
 '''
 from django.shortcuts import render
 from django.contrib.auth.decorators import  login_required
-from ..models import MonthScore,Record,Stakeholder
+from ..models import MonthScore,Record,Stakeholder,MonthRecord
 
 
 
@@ -16,22 +16,38 @@ from ..models import MonthScore,Record,Stakeholder
 def month_detail(request):
     '''详情'''
     context= {}
+    context["performanceActive"]= "active"
     month_id = request.GET.get('month_id',None)
     data_list = []
-    table_title = [u'考核项',u'得分',u'自己']
+    table_title = [u'考核项',u'得分']
     if month_id:
+        # 如果是上级查看显示打分人和得分人的名字
+        display = False
         user = request.user
-
+        month_record = MonthRecord.objects.get(id = month_id)
+        if month_record.owner.id != user.id:
+            display = True
+            table_title.append(month_record.owner.username_zh)
+            user = month_record.owner
+        else:
+            table_title.append(u"自己")
         month_scores = MonthScore.objects.filter(month_record__id =month_id,owner= user)
+        print month_scores
         stakeholder = Stakeholder.objects.get(person=user)
         highers = stakeholder.higher.all()
         relevants = stakeholder.stakeholder.all()
         higher_len = len(highers)
         relevant_len = len(relevants)
         for i in range(higher_len):
-            table_title.append(u'上级%s'% i)
+            if display:
+                table_title.append(highers[i].username_zh)
+            else:
+                table_title.append(u'上级%s' % i)
         for i in range(relevant_len):
-            table_title.append(u'相关人%s'% i)
+            if display:
+                table_title.append(relevants[i].username_zh)
+            else:
+                table_title.append(u'相关人%s'% i)
         for month_score in month_scores:
             line_list = []
             if not month_score.month_record:

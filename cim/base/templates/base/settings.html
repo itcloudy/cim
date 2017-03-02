@@ -27,9 +27,10 @@
                         <li class="list-group-item {%if add_user%} active {%endif%}"><a type='button' class='btn-block' href="/settings/add_user/">添加用户</a></li>
                     {%endif%}
                     <li class="list-group-item {%if change_password%} active {%endif%}"><a type='button' class='btn-block' href="/settings/change_password/">修改密码</a></li>
-                    <li class="list-group-item {%if reset_password%} active {%endif%}"><a type='button' class='btn-block' href="/settings/reset_password/">重置密码</a></li>
+
                     <li class="list-group-item"><a type='button' class='btn-block' href="/settings/change_head/">修改头像</a></li>
                     {%if user.is_superuser%}
+                        <li class="list-group-item {%if reset_password%} active {%endif%}"><a type='button' class='btn-block' href="/settings/reset_password/">重置密码</a></li>
                         <li class="list-group-item {%if performance_setting%} active {%endif%}"><a type='button' class='btn-block' href="/performance/setting/">绩效考核</a></li>
                     {%endif%}
 

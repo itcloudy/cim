@@ -17,6 +17,8 @@ urlpatterns = [
     url(r'^setting/$',views.setting,name='setting'),
     #绩效考核打分页面
     url(r'^list/$',views.list,name='list'),
+    #绩效考核打分页面
+    url(r'^newlist/$',views.newlist,name='newlist'),
     #绩效考核提交
     url(r'^post/$',views.action_post,name='action_post'),
     # 绩效考核提交

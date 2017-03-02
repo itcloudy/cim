@@ -15,4 +15,6 @@ from django.contrib.auth.decorators import  login_required
 def detail(request):
     '''详情'''
     context= {}
+    context["performanceActive"]= "active"
+
     return render(request,'performance/detail.html',context=context)

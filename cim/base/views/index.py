@@ -17,6 +17,8 @@ from base.models import  User
 def index(request):
     '''首页'''
     context = {}
+    context["homeActive"]= "active"
+
     if 'user' in request.session.keys():
         context['user'] =request.session['user']
 

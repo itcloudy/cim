@@ -21,6 +21,7 @@ from base.models import Department
 def result(request):
     '''查看结果'''
     context = {}
+    context["performanceActive"]= "active"
     user = request.user
     wait_action = Record.objects.filter(mark__id=user.id, done=False)
     department_list = []
@@ -96,6 +97,7 @@ def search_result(department_id,month_id=0,name='',page=1):
         assessment_line_ids = [line.id for line in assessmentLines]
         table_title = [u'月份', u'得分人', u'总分']
         table_title += [line.name for line in assessmentLines]
+        table_title.append(u"详情")
 
         table_list = []
         monthRecords = MonthRecord.objects.filter(owner__department__id=department_id)
@@ -135,6 +137,7 @@ def search_result(department_id,month_id=0,name='',page=1):
                     tem_list.append(monthScore.score)
                 else:
                     tem_list.append(u'未完成')
+            tem_list.append(monthRecord.id)
             table_list.append(tem_list)
         if table_list:
             result_data['table_title'] = table_title

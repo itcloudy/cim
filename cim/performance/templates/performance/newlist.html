@@ -1,0 +1,35 @@
+{%extends 'base/base.html' %}
+{% load staticfiles %}
+{%block css_extend %}
+{{block.super}}
+    <link rel="stylesheet"  href="{% static 'performance/css/performance.css' %}" />
+
+{%endblock%}
+{%block mainblock%}
+<div class="list-block">
+
+        <div class="row" id="display-table">
+                <table id='performance-table' class="table table-bordered table-hover table-condensed table-striped">
+                    <thead>
+                <tr  class="info">
+                    <th>姓名</th>
+
+                    {%for title in performanceTitle%}
+                     <th>{{title}}</th>
+                    {%endfor%}
+                     </tr>
+
+        </thead>
+                </table>
+            </div>
+</div>
+{%endblock%}
+{%block js_extend %}
+{{block.super}}
+    <script src="{% static 'performance/js/performance.js' %}"></script>
+
+
+
+
+
+{%endblock%}

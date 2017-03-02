@@ -23,3 +23,7 @@
     width:200px;
     height:30px;
 }
+.performance-table tbody{
+    border-bottom:2px solid ;
+
+}

@@ -15,6 +15,8 @@ from ..models import  MonthRecord,MonthScore
 def history(request):
     '''详情'''
     context= {}
+    context["performanceActive"]= "active"
+
     user = request.user
     month_records = MonthRecord.objects.filter(owner=user)
     month_record_list = []

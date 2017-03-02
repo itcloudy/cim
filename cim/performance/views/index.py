@@ -20,6 +20,7 @@ from base.models import Department
 def index(request):
     '''绩效首页'''
     context = {}
+    context["performanceActive"]= "active"
     user = request.user
     #判断是否有绩效查看的权限
     resultCheck = ResultCheck.objects.filter(user=user)
@@ -61,6 +62,7 @@ def index(request):
 def setting(request):
     '''绩效设置'''
     context = {}
+    context["performanceActive"]= "active"
     errorList = []
     context['performance_setting'] = True
     if request.method == "POST":

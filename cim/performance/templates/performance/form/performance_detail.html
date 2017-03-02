@@ -1,16 +1,22 @@
+<table class="table table-hover table-condensed table-striped table-bordered performance-table">
+
 {%for detail in details%}
-<table class="table table-hover table-condensed table-striped table-bordered">
-    <thead>
-        <tr>
-            <th>考核维度</th>
-            <th>考核项</th>
-            <th>评价内容</th>
-            {%for title in detail.title_list%}
-               <th>{{title}}</th>
-            {%endfor%}
-            <th>关键字</th>
-        </tr>
-    </thead>
+        {%if forloop.first%}
+
+        <thead>
+            <tr  class="info">
+                <th>考核维度</th>
+                <th>考核项</th>
+                <th>评价内容</th>
+                            <th>关键字</th>
+
+                {%for title in detail.title_list%}
+                   <th>{{title}}</th>
+                {%endfor%}
+            </tr>
+        </thead>
+         {%endif%}
+
     <tbody>
 
         {%for assessment_line in detail.assessment_line_list%}
@@ -20,15 +26,15 @@
                  {%endif%}
                  <th>{{assessment_line.name}}</th>
                  <td>{{assessment_line.prompt}}</td>
+                 <td>{{assessment_line.key_word}}</td>
                 {%for line_name in assessment_line.detail_list%}
                     <td>{{line_name}}</td>
                 {%endfor%}
-                 <td>{{assessment_line.key_word}}</td>
              </tr>
         {%endfor%}
 
     </tbody>
-</table>
 {% empty %}
 <h1 class="text-center">暂无数据</h1>
 {%endfor%}
+</table>

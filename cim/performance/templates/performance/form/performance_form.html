@@ -7,8 +7,8 @@
 {%endif%}
 <form id="performance-form" action="/performance/post/" role="form" method="post">
     {% csrf_token %}
-    {%for detail in performance_details%}
     <table class="table table-hover table-condensed table-striped table-bordered">
+    {%for detail in performance_details%}
         <thead>
             <tr>
                 <th>考核维度</th>
@@ -42,10 +42,10 @@
             {%endfor%}
 
         </tbody>
-    </table>
     {% empty %}
     <h1 class="text-center">该项没有数据</h1>
     {%endfor%}
+    </table>
 
 
     {%if performance_details %}
